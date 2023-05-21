@@ -1,4 +1,5 @@
 ﻿using DesignPatterns._2___ChainOfResposibility.TruthModel;
+using DesignPatterns._3___TemplateMethod.TruthModel;
 
 
 // the correct use Strategy pattern
@@ -49,5 +50,23 @@ double discount = calc.Discount(budget2);
 
 
 Console.WriteLine($"Nesse caso, o desconto obtido foi: {discount}");
+
+Console.WriteLine("\n");
+
+
+// the correct use Template Method pattern
+
+// =====================================================================================================
+// ===================================== TEMPLATE METHOD ===============================================
+// =====================================================================================================
+
+var budget3 = new  BudgetTruth(500);
+
+
+
+var ICPP = new ICPPTruth();
+
+
+Console.WriteLine($"No caso do ICPP, O desconto foi de: {ICPP.Discount(budget)}");
 
 Console.WriteLine("\n");
