@@ -1,5 +1,9 @@
 ﻿using DesignPatterns._2___ChainOfResposibility.TruthModel;
 using DesignPatterns._3___TemplateMethod.TruthModel;
+using DesignPatterns._5___State.TruthModel;
+using DesignPatterns._6___Builder.ErrorModel;
+using DesignPatterns._6___Builder.TruthModel;
+using DesignPatterns._6___Builder_e_Observer.TruthModel;
 
 
 // the correct use Strategy pattern
@@ -60,13 +64,79 @@ Console.WriteLine("\n");
 // ===================================== TEMPLATE METHOD ===============================================
 // =====================================================================================================
 
-var budget3 = new  BudgetTruth(500);
+
+Console.WriteLine("================ TEMPLATE METHOD ============================");
+Console.WriteLine("\n");
+var budget3 = new  BudgetTruth(800);
 
 
 
 var ICPP = new ICPPTruth();
 
 
-Console.WriteLine($"No caso do ICPP, O desconto foi de: {ICPP.Discount(budget)}");
+Console.WriteLine($"No caso do ICPP, O desconto foi de: {ICPP.Discount(budget3)}");
+
+Console.WriteLine("\n");
+
+
+// the correct use State pattern
+
+// =====================================================================================================
+// ===================================== STATE =========================================================
+// =====================================================================================================
+
+Console.WriteLine("================ STATE ============================");
+Console.WriteLine("\n");
+
+
+var budget4 = new BudgetTruthChangeOk(600);
+
+Console.WriteLine($"O valor do budget é: {budget4.Value}");
+
+budget4.ApplyExtraTax();
+
+
+budget4.IsAprroved();
+
+budget4.ApplyExtraTax();
+
+Console.WriteLine($"O valor do budget após aprovação é: {budget4.Value}");
+
+Console.WriteLine("\n");
+
+
+
+
+// the correct use Builder pattern
+
+// ================================================================================================================
+// ===================================== BUILDER E OBSERVER =======================================================
+// ================================================================================================================
+
+Console.WriteLine("================ BUILDER ============================");
+Console.WriteLine("\n");
+
+
+var invoiceBuilder = new BuildInvoice();
+
+invoiceBuilder
+    .ForCompanies("AXIOS LTDA")
+    .WithCnpj("5135138019312")
+    .WithItem(new ItemInvoice("Caixa de Som", 560))
+    .WithItem(new ItemInvoice("Mesa de Sinuca", 300))
+    .WithNotes("OBS: cuidado para não se divertir demais");
+
+
+
+invoiceBuilder.AddAction(new SenderDb());
+invoiceBuilder.AddAction(new SenderEmail());
+invoiceBuilder.AddAction(new SenderSMS());
+
+
+var invoice = invoiceBuilder.BuildeAInvoice();
+
+Console.WriteLine($"VALOR BRUTO ARRECADADO: {invoice.GrossValue}");
+Console.WriteLine($"IMPOSTO DECLARADO NA NOTA FISCAL: {invoice.Taxs}");
+Console.WriteLine($"DATA DE EMISSÃO: {invoice.IssueDate}");
 
 Console.WriteLine("\n");
