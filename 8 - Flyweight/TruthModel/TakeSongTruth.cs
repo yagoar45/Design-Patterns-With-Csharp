@@ -13,8 +13,8 @@ namespace DesignPatterns._8___Flyweight.TruthModel
                 notes.ReturnNoteForName("re"),
                 notes.ReturnNoteForName("mi"),
                 notes.ReturnNoteForName("fa"),
-                notes.ReturnNoteForName("sol")
             };
+
         }
     }
 }

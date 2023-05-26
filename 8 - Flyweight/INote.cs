@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns._8___Flyweight
 {
-    internal interface INote
+    public interface INote
     {
+        int frequence { get; }
     }
 }

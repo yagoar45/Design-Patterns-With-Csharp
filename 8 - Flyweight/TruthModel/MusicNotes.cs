@@ -14,8 +14,7 @@ namespace DesignPatterns._8___Flyweight
             {"fá", new Fa()},
         };
 
-
-       
+   
         public INote ReturnNoteForName(string nameMusic)
         {
             return notes[nameMusic];

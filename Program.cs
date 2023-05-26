@@ -140,3 +140,5 @@ Console.WriteLine($"IMPOSTO DECLARADO NA NOTA FISCAL: {invoice.Taxs}");
 Console.WriteLine($"DATA DE EMISSÃO: {invoice.IssueDate}");
 
 Console.WriteLine("\n");
+
+
